@@ -1,0 +1,68 @@
+//FILA( ADICIONAR / REMOVER / IMPRIMIR / APAGAR)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct no {
+int info;
+struct no* prox;
+} TNo;
+typedef TNo *PNo;
+typedef struct fila {
+PNo ini;
+PNo fim;
+} TFila;
+typedef TFila *PFila;
+
+PFila cria() {
+PFila f = (PFila) malloc(sizeof(TFila));
+f->ini = f->fim = NULL;
+return (f);
+}
+
+PFila insere(PFila f, int v){
+  PNo novo = (PNo)malloc(sizeof(TNo));
+  novo->info = v;
+  novo->prox = NULL;
+  
+  //Verifica se existe algum valor na fila, se o fim for null o ini tambem sera
+  if(f->fim==NULL) f->ini=novo;
+    
+    //atual valor final tenha o novo falor imbutido como próximo
+  else f->fim->prox=novo;
+  
+  //Faz como que o ultimo da fila seja o ultimo valor dado
+  f->fim=novo;
+
+  return f;//N prescisa retornar, mas se for com lista e pilha é necessário
+}
+
+PFila retira(PFila f,int *v){
+  PNo a = f->ini;
+  *v = a->info;
+  if(f->ini==NULL)return f;
+  if(a->prox==NULL ){
+   f->fim=NULL;free(a);
+  }else{
+    f->ini = a->prox;
+    free(a);
+  }
+  return  f;
+}
+
+void imprimir(PFila f){
+  PNo a;
+  for(a=f->ini;a!=NULL;a=a->prox){]
+  printf("%d",a->info)}
+}
+
+PFila libera(PFila f){
+  if(f->ini==NULL) free(f);
+  PNo a = f->ini;
+  for(;a!=NULL;a=f->ini){
+    f->ini = a->prox;
+    free(a);
+  }
+  free(f);
+  return f;
+}
