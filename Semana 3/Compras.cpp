@@ -9,7 +9,10 @@
 int main() {
   int n;
   std::cin >> n;
+  
+  // Para não pegar o /n após o cin >> n
   std::cin.ignore();
+  
   std::string line[n];
   std::vector<std::string> words[n]; // Vetor para armazenar as palavras
   for(int i = 0; i < n; i++){
@@ -33,7 +36,8 @@ int main() {
     // Ordena as palavras
     std::sort(words[i].begin(), words[i].end());
 
-
+//essa parte serve para remover as palavras repetidas, como um tipo string não é compativel com a função unique()
+]//foi usado um tipo auto(o compilador decide o tipo da váriavel baseado na necessidade do código
     auto last = std::unique(words[i].begin(), words[i].end());
       words[i].erase(last, words[i].end());
   }
@@ -50,7 +54,7 @@ int main() {
     }
     std::cout << std::endl;
   }
-    // Exibe as palavras ordenadas
+    
   
 
   return 0;
