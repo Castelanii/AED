@@ -7,4 +7,4 @@ Aqui terão os projetos e exercícios desenvolvidos referente a matéria de AED 
 📁[Semana 3](https://github.com/Castelanii/AED/tree/main/Semana%203)<br>
 📁[Semana 4](https://github.com/Castelanii/AED/tree/main/Semana%204)<br>
 📁[Semana 5](https://github.com/Castelanii/AED/tree/main/Semana%205)<br>
-📁[EXERCICIOS BEECROWD]
+📁[EXERCICIOS BEECROWD](https://github.com/Castelanii/AED/tree/main/Exercicios%20Crowd%20)
