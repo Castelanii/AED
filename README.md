@@ -3,3 +3,8 @@ Aqui terão os projetos e exercícios desenvolvidos referente a matéria de AED 
 
 
 📁[Semana 1](https://github.com/Castelanii/AED/tree/main/Semana1%20(aquecimento))
+📁[Semana 2](https://github.com/Castelanii/AED/tree/main/Semana2)
+📁[Semana 3](https://github.com/Castelanii/AED/tree/main/Semana%203)
+📁[Semana 4](https://github.com/Castelanii/AED/tree/main/Semana%204)
+📁[Semana 5](https://github.com/Castelanii/AED/tree/main/Semana%205)
+📁[EXERCICIOS BEECROWD]
