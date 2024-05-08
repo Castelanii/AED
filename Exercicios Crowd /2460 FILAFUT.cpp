@@ -79,7 +79,7 @@ No removerdomeio(Fila f,int id){
   if(prox==f->fim){
     //se o ultimo for igual ao primeiro a fila se encerra
     if(f->fim==f->ini){
-      free(f->ini);
+      delete f->ini;
       f->ini = NULL;
       f->fim = NULL;
     }
@@ -98,7 +98,7 @@ No removerdomeio(Fila f,int id){
   if(prox==f->ini){
     //primeiro iguakl o ultimo
     if(f->fim==f->ini){
-      free(f->ini);
+      delete f->ini;
       f->ini = NULL;
       f->fim = NULL;
     }
@@ -107,7 +107,7 @@ No removerdomeio(Fila f,int id){
     else{
       lib = f->ini;
       f->ini = f->ini->prox;
-      free(lib);
+      delete lib;
     }
 
     return f->ini;
@@ -118,7 +118,7 @@ No removerdomeio(Fila f,int id){
   lib = prox;
   aux->prox=prox->prox;
   prox = prox->prox;
-  free(lib);
+  delete lib;
   return f->ini;
 }
 
