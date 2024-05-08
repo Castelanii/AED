@@ -89,7 +89,7 @@ No removerdomeio(Fila f,int id){
       aux->prox=NULL;
       f->fim = aux;
       
-      free(lib);
+      delete lib;
     }
    
    return f->ini; 
