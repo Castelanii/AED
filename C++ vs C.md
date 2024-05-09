@@ -18,4 +18,7 @@ daqui aprendendo a ler códigos em C++ (pelomenos os meus).
  - `std::endl` pela minha memória(duvidosa) o “\n” não funciona no c++, logo, seu substituto será usar o cout junto com o endl, da seguinte forma: sdt::cout << std::endl; (note que você pode botar um endline no final de todo texto que printar com o cout adicionando o << com o endl)
 
 
+<h3>O que é o std::?</h3>
 
+std em c++ é a abreviação de standart (padrão).
+Assim std é a biblioteca padrão do c++, você irá usar ela quando for usar funções atribuidas na versão base do c++ (sem nenhuma biblioteca), por exemplo, uma string no c é um vetor de caracteres, já no c++ você pode declarar uma string da seguinte forma: `std::string str;`, no caso do c++ as manipulações de uma string serão iguais ao vetor no c, por exemplo, se quiser pegar o primeiro caractere da string é só usar `str[0]`.
