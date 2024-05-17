@@ -4,7 +4,7 @@
  1. Quando um elemento for inserido poderá ser de `qualquer` posição da lista.
  2. Quando um elemento for removido, podera ser `qualquer` elemento da lista.
 
-## Cada Elemento da fila *nó* tem um valor atribuido à ele e um ponteiro para o _próximo da fila (nó):_
+## Cada Elemento da lista *nó* tem um valor atribuido à ele e um ponteiro para o _próximo da lista (nó):_
 ~~~c++
 struct Node {
     std::string info;
@@ -71,9 +71,9 @@ void listarEspecifico(Node* lista, int c){
 ### Remover elemento do meio da lista.
 
 ~~~c++
-No removerdomeio(Fila f,int id){
+No removerdomeio(Node *f,int id){
   if(f->ini==NULL)return NULL;
-  No aux, prox,lib;
+  Node *aux, *prox,*lib;
   //acha o no com o id
   for(aux=NULL,prox = f->ini ; prox!=NULL && prox->identificador!=id ; aux=prox,prox= prox->prox )
     
