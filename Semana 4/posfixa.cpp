@@ -1,79 +1,80 @@
 #include <iostream>
 #include <stack>
 #include <string>
-
-using namespace std;
+#include <vector>
+#include <unordered_map>
+#include <cctype>
 
 // Função para verificar se o caractere é um operador
-bool ehOperador(char c) {
-    return (c == '+' || c == '-' || c == '*' || c == '/');
+bool isOperator(char c) {
+    return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
 }
 
-// Função para retornar a precedência do operador
-int precedencia(char op) {
-    if (op == '+' || op == '-')
-        return 1;
-    if (op == '*' || op == '/')
-        return 2;
+// Função para verificar a precedência dos operadores
+int precedence(char op) {
+    if (op == '+' || op == '-') return 1;
+    if (op == '*' || op == '/') return 2;
+    if (op == '^') return 3;
     return 0;
 }
 
-// Função para converter expressão infix para postfix
-string infixParaPosfixa(string infix) {
-    stack<char> pilha;
-    string posfixa = "";
+// Função para converter uma expressão infixa para posfixa
+std::string infixToPostfix(const std::string &expression) {
+    std::stack<char> ops; // Pilha para operadores
+    std::string postfix;  // Resultado posfixo
 
-    for (int i = 0; i < infix.length(); i++) {
-        char c = infix[i];
-
-        // Se o caractere for um operando, adicione ao resultado
-        if (isalnum(c))
-            posfixa += c;
-        // Se o caractere for um parêntese esquerdo, empilhe
-        else if (c == '(')
-            pilha.push(c);
-        // Se o caractere for um parêntese direito, desempilhe até encontrar o parêntese esquerdo correspondente
-        else if (c == ')') {
-            while (!pilha.empty() && pilha.top() != '(') {
-                posfixa += pilha.top();
-                pilha.pop();
-            }
-            pilha.pop(); // Desempilhe o parêntese esquerdo
+    for (char c : expression) {
+        if (std::isspace(c)) {
+            continue; // Ignorar espaços em branco
         }
-        // Se o caractere for um operador
-        else if (ehOperador(c)) {
-            // Desempilhe os operadores com precedência maior ou igual ao operador atual
-            while (!pilha.empty() && precedencia(pilha.top()) >= precedencia(c)) {
-                posfixa += pilha.top();
-                pilha.pop();
+        if (std::isalnum(c)) {
+            // Se for um operando, adiciona à saída
+            postfix += c;
+        } else if (c == '(') {
+            // Se for um parêntese esquerdo, push na pilha
+            ops.push(c);
+        } else if (c == ')') {
+            // Se for um parêntese direito, pop até encontrar '('
+            while (!ops.empty() && ops.top() != '(') {
+                postfix += ops.top();
+                ops.pop();
             }
-            // Empilhe o operador atual
-            pilha.push(c);
+            if (!ops.empty()) {
+                ops.pop(); // Remove '('
+            }
+        } else if (isOperator(c)) {
+            // Se for um operador, verifica a precedência
+            while (!ops.empty() && precedence(ops.top()) >= precedence(c)) {
+                if (c == '^' && ops.top() == '^') break; // Associa da direita para a esquerda para '^'
+                postfix += ops.top();
+                ops.pop();
+            }
+            ops.push(c);
         }
     }
 
-    // Desempilhe todos os operadores restantes
-    while (!pilha.empty()) {
-        posfixa += pilha.top();
-        pilha.pop();
+    // Pop os operadores restantes na pilha
+    while (!ops.empty()) {
+        postfix += ops.top();
+        ops.pop();
     }
 
-    return posfixa;
+    return postfix;
 }
 
 int main() {
-     int n, i;
-    cin >> n;
-    string expressao_infixa[n];
-   
-    for(i=0;i<n;i++)cin >> expressao_infixa[n];
-    
-    for(i=0;i<n;i++){
-         string expressao_posfixa = infixParaPosfixa(expressao_infixa[n]);
-         cout <<  expressao_posfixa << endl;
+    int N;
+    std::cin >> N;
+    std::cin.ignore(); // Ignorar o newline após N
+    std::vector<std::string> expressions(N);
+
+    for (int i = 0; i < N; ++i) {
+        std::getline(std::cin, expressions[i]);
     }
-   
-    
+
+    for (const std::string &expression : expressions) {
+        std::cout << infixToPostfix(expression) << std::endl;
+    }
 
     return 0;
 }
