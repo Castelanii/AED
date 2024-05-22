@@ -65,7 +65,7 @@ No remover (Fila f, int *v) {
 
 	if (f == NULL) return NULL;
   //pega o elemento que pretendemos remover
-	No lib = fila->ini; 
+	No lib = f->ini; 
 	if (f->ini == NULL) return NULL;
 
 	//o ponteiro pega o dado do elemento removido
@@ -79,7 +79,7 @@ No remover (Fila f, int *v) {
 	delete lib;
 
 // Retorna o Novo Início da Fila
-	return fila->ini; 
+	return f->ini; 
 }
 ~~~
 
